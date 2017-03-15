@@ -1,0 +1,28 @@
+{
+  "name": "serverless-s3db",
+  "version": "1.0.0",
+  "description": "serverless lambda func - use s3 as a nosql db",
+  "main": "handler.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://coreorm@github.com/coreorm/serverless-s3db.git"
+  },
+  "keywords": [
+    "s3",
+    "serverless",
+    "lambda"
+  ],
+  "author": "Bruce B Li @coreorm",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/coreorm/serverless-s3db/issues"
+  },
+  "homepage": "https://github.com/coreorm/serverless-s3db#readme",
+  "dependencies": {
+    "async": "^2.1.5",
+    "aws-sdk": "^2.28.0"
+  }
+}
