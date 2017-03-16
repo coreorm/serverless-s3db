@@ -27,10 +27,16 @@ module.exports.list = (event, context, callback) => {
     const startTime = Date.now();
 
     dao.find(conf.s3bucket, '', '', function (err, data) {
+        if (err) {
+            response.statusCode = 503;
+            response.message = 'ERROR';
+            response.body = err.toString();
+            response.processed = Date.now() - startTime;
+            callback(null, response);
+        }
+
         response.body = {
-            err,
             data,
-            event,
             processed: Date.now() - startTime
         };
         callback(null, response);
