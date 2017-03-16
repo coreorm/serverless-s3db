@@ -1,3 +1,4 @@
 {
-    "s3bucket": "s3db-datastore"
+    "s3bucket": "s3db-datastore",
+    "x-api-key": "658E94D55CEC0CA6AEF509F02BAD3E19"
 }
