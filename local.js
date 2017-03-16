@@ -7,12 +7,12 @@ const h = require('./handler');
 //     console.log(err, list);
 // });
 
-h.fetch({
-    body: {
-        // keys: ['user/a.json', 'user/b.json']
-        keyword: 'a.',
-        prefix: 'user'
-    }
+h.delete({
+    query: {
+        keys: 'user/a.json,user/b.json',
+        // key: 'user/a'
+    },
+    headers: {'x-api-key': conf['x-api-key']}
 }, null, function (err, d) {
     console.log(err, d);
 });

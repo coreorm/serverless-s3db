@@ -2,6 +2,13 @@
 
 Build with serviceless, or use lib/dao.js for just low level CRUD
 
+# Basic API key auth
+setup `x-api-key` in `conf/config.js` and send it in the request header to authenticate.
+
+# Configuration
+Configure your own server.yml to ensure the access is all good before deploying.
+Also in `conf/config.js` rename the bucket to the one you would like to use.
+
 # APIs
 ```
   GET - /list
@@ -27,6 +34,10 @@ Build with serviceless, or use lib/dao.js for just low level CRUD
   {
   	"key": "path/foo.json"
   }
+  
+  DELETE - /delete
+  delete one or multiple items
+  use ?key=key1 or ?keys=key1,key2,key3... (comma separated)
 ```
   
 # DAO Apis
@@ -74,4 +85,20 @@ fetchAll = (bucket, keys, cb)
  * @param cb
  */
 findWithContent = (bucket, keyword, path, cb)
+
+/**
+ * delete multiple items
+ * @param bucket
+ * @param keys ['key1', 'key2']
+ * @param cb
+ */
+deleteMany = (bucket, keys, cb)
+
+/**
+ * delete one item
+ * @param bucket
+ * @param key
+ * @param cb
+ */
+deleteOne = (bucket, key, cb)
 ```

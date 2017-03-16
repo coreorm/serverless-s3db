@@ -203,6 +203,9 @@ module.exports.delete = (event, context, callback) => {
         }
 
         if (typeof obj.key === 'string') {
+            if (obj.key.length <= 0) {
+                callback(new Error('invalid keys provided'), null);
+            }
             dao.deleteOne(conf.s3bucket, obj.key, function (err, data) {
                 if (err) {
                     throw err;
@@ -213,8 +216,12 @@ module.exports.delete = (event, context, callback) => {
                 };
                 callback(null, response);
             })
-        } else if (typeof obj.keys === 'object' && obj.keys instanceof Array) {
-            dao.deleteOne(conf.s3bucket, obj.key, function (err, data) {
+        } else if (typeof obj.keys === 'string') {
+            const keys = obj.keys.split(',');
+            if (keys.length <= 0) {
+                callback(new Error('invalid keys provided'), null);
+            }
+            dao.deleteMany(conf.s3bucket, keys, function (err, data) {
                 if (err) {
                     throw err;
                 }
